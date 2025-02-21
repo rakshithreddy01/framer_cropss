@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup - E-Kisaan</title>
+  <link rel="stylesheet" href="basic.css">
+</head>
+
+<body>
+  <div class="signup-container">
+    <h2>Signup</h2>
+    <form id="signupForm">
+      <label for="newUsername">Username:</label>
+      <input type="text" id="newUsername" required>
+
+      <label for="newPassword">Password:</label>
+      <input type="password" id="newPassword" required>
+
+      <button type="submit">Signup</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const newUsername = document.getElementById('newUsername').value;
+      const newPassword = document.getElementById('newPassword').value;
+      
+      localStorage.setItem('username', newUsername);
+      localStorage.setItem('password', newPassword);
+      
+      alert('Signup successful! You can now log in.');
+      window.location.href = 'login.html';
+    });
+  </script>
+</body>
+
+</html>

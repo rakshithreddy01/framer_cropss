@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crops & Pesticides</title>
+    <link rel="stylesheet" href="./fertilizer.css">
+</head>
+<body>
+
+    <h1 class="a">Welcome to Crops-Suitable Pesticide Page</h1>
+    <h3 class="a">This page helps you to find the perfect pesticide for your crop</h3><br>
+
+    <div class="f">
+        <h3>Please select the type of crop:</h3>
+        <input type="radio" name="Crop" value="Wheat"/>Wheat<br>
+        <input type="radio" name="Crop" value="Rice"/>Rice <br>
+        <input type="radio" name="Crop" value="Onion"/>Onion <br>
+        <input type="radio" name="Crop" value="Corn"/>Corn <br>
+        <input type="radio" name="Crop" value="Potato"/>Potato<br>
+        <button id="submitBtn">Submit</button>
+    </div>
+
+    <h2 id="output1"></h2>
+    <h2 id="output"></h2>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("submitBtn").addEventListener("click", getvalue);
+        });
+
+        function getvalue() {
+            const selectedCrop = document.querySelector('input[name="Crop"]:checked');
+            const output1 = document.getElementById("output1");
+            const output = document.getElementById("output");
+
+            if (!selectedCrop) {
+                output1.innerHTML = "Please select a crop.";
+                output.innerHTML = "";
+                return;
+            }
+            output1.innerHTML = "Pesticides required for harvesting are:";
+            const pesticides = {
+                "Wheat": "Pre-emergent herbicide Pendimethalin 8 - 8.5 mL/L of water in 160-180 litres of water for one acre of wheat crop at 0-3 days after sowing.",
+                "Rice": "Lambda-cyhalothrin, Malathion, and Zeta-cypermethrin.",
+                "Onion": "Chlorpyrifos.",
+                "Corn": "Carbaryl, Cyhalothrin, Cypermethrin, Permethrin, Orbifenthrin.",
+                "Potato": "Abamectin, Lambda-cyhalothrin, Dinotefuran, Imidacloprid, Thiamethoxam, Abamectin, or Bifenthrin."
+            };
+            output.innerHTML = pesticides[selectedCrop.value] || "No data available.";
+        }
+    </script>
+</body>
+</html>
